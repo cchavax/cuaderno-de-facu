@@ -65,6 +65,8 @@
     font-style:italic;
     font-family:'Fraunces', serif;
   }
+  .backup-actions{display:flex; gap:8px;}
+  .backup-actions button{font-size:12px; padding:6px 10px;}
 
   /* Tabs styled as binder dividers */
   .tabs{
@@ -199,6 +201,7 @@
     gap:12px;
     padding:10px 0;
     border-bottom:1px dashed var(--paper-line);
+    flex-wrap:wrap;
   }
   .agenda-item:last-child{border-bottom:none;}
   .agenda-date{
@@ -218,8 +221,12 @@
     background:var(--highlight-soft);
     color:#7a5817;
   }
+  .tag.outline{background:transparent; border:1.5px solid var(--border); color:var(--ink-soft);}
   .colordot{
     width:10px;height:10px;border-radius:50%;display:inline-block;flex-shrink:0;
+  }
+  .temas-summary{
+    width:100%; font-size:12px; color:var(--ink-soft); margin-top:2px; padding-left:82px;
   }
 
   /* Materias */
@@ -249,13 +256,50 @@
   .prom-badge.malo{background:var(--pen-soft); color:var(--pen);}
   .prom-badge.medio{background:var(--highlight-soft); color:#7a5817;}
   .materia-body{margin-top:14px;}
-  table.notas-tbl{width:100%; border-collapse:collapse; font-size:13px; margin-bottom:10px;}
-  table.notas-tbl th{
-    text-align:left; font-size:11px; color:var(--ink-soft); font-weight:700;
-    border-bottom:1.5px solid var(--ink); padding:6px 8px;
+
+  .nota-card{
+    border:1.5px solid var(--border); border-radius:6px; padding:10px 12px; margin-bottom:8px; background:#fdfbf5;
   }
-  table.notas-tbl td{padding:6px 8px; border-bottom:1px solid var(--paper-line);}
-  table.notas-tbl input{width:100%; padding:5px 6px; font-size:13px;}
+  .nota-card .row{margin-bottom:0;}
+  .nota-card input[type=number]{width:100%;}
+  .nota-card .recup-row{margin-top:8px; padding-top:8px; border-top:1px dashed var(--paper-line);}
+  .nota-card .recup-check{display:flex; align-items:center; gap:6px; font-size:13px; font-weight:400; color:var(--ink);}
+  .nota-card .recup-check input{width:auto;}
+
+  .temario-sec{margin-top:16px; padding-top:14px; border-top:1px dashed var(--paper-line);}
+  .temas-list{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px;}
+  .tema-chip{
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--paper-line); color:var(--ink); font-size:12px; font-weight:600;
+    padding:4px 10px; border-radius:20px;
+  }
+  .tema-chip button{background:none; border:none; color:var(--pen); cursor:pointer; font-weight:700; font-size:12px; padding:0;}
+
+  .cond-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px; padding-top:14px; border-top:1px dashed var(--paper-line);
+  }
+  @media (max-width:720px){ .cond-grid{grid-template-columns:1fr;} }
+  .cond-card{border:1.5px solid var(--border); border-radius:6px; padding:14px; background:#fdfbf5;}
+  .cond-title{font-family:'Fraunces', serif; font-weight:600; font-size:15px; margin-bottom:10px;}
+  .requisitos-list{margin:10px 0; display:flex; flex-direction:column; gap:6px;}
+  .req-item{display:flex; align-items:center; gap:6px; font-size:13px; font-weight:400;}
+  .req-item input{width:auto;}
+  .req-item span{flex:1;}
+  .veredicto{
+    margin-top:10px; padding:8px 10px; border-radius:6px; font-weight:700; font-size:13px;
+    background:var(--paper-line); color:var(--ink-soft);
+  }
+  .veredicto.ok{background:var(--pine-soft); color:var(--pine);}
+  .veredicto.malo{background:var(--pen-soft); color:var(--pen);}
+  .detalle-list{margin-top:8px; display:flex; flex-direction:column; gap:4px;}
+  .detalle-item{font-size:12px; color:var(--ink-soft);}
+  .detalle-item.ok{color:var(--pine);}
+  .detalle-item.malo{color:var(--pen);}
+
+  .temas-form-sec{margin-top:10px; border-top:1px dashed var(--paper-line); padding-top:10px;}
+  .tema-check-row{display:flex; align-items:center; gap:8px; margin-bottom:6px; flex-wrap:wrap;}
+  .tema-check-row label{font-size:13px; font-weight:400; display:flex; align-items:center; gap:6px; min-width:180px;}
+  .tema-check-row input[type=text]{flex:1; min-width:160px; font-size:12px; padding:5px 8px;}
 
   /* Asistencia */
   .asis-row{
@@ -285,7 +329,6 @@
   .mat-item .meta{font-size:12px; color:var(--ink-soft); margin-top:3px;}
   .mat-item a{color:var(--ink); text-decoration:underline; font-size:12px;}
 
-  select.color-pick{padding:4px; width:44px; height:32px;}
   .color-swatch{
     width:22px;height:22px;border-radius:5px;border:1.5px solid var(--ink); cursor:pointer;
   }
@@ -300,9 +343,6 @@
     margin-bottom:18px;
   }
   .top-actions{display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:10px;}
-
-  .backup-actions{display:flex; gap:8px;}
-  .backup-actions button{font-size:12px; padding:6px 10px;}
 
   .hero-countdown{
     display:flex; align-items:center; gap:18px;
@@ -353,6 +393,7 @@
   @media (max-width:640px){
     .masthead h1{font-size:24px;}
     .prom-badge{font-size:16px;}
+    .temas-summary{padding-left:0;}
   }
 </style>
 </head>
@@ -390,8 +431,8 @@ let state = { materias: [], eventos: [] };
 let loaded = false;
 let anioSeleccionado = null;
 
-const TIPOS_EVENTO = ['Parcial','Recuperatorio','Final','TP / Entrega','Otro'];
-const TIPOS_MATERIAL = ['Apunte','Resumen','Video','Libro','Link','Otro'];
+const TIPOS_EVENTO = ['Parcial','Recuperatorio','Final','Entrega / TP','Desafío','Cuestionario','Otro'];
+const TIPOS_EXAMEN = ['Parcial','Recuperatorio','Final'];
 
 function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
 
@@ -417,6 +458,18 @@ const persistencia = {
   }
 };
 
+function materiaVacia(nombre, cuatrimestre, anio, color){
+  return {
+    id: uid(), nombre, cuatrimestre, anio, color,
+    notas: [],
+    asistencia: {total:0, presentes:0},
+    materiales: [],
+    temas: [],
+    regularidad: {asistenciaMin:'', promedioMin:'', requisitos:[]},
+    promocion: {asistenciaMin:'', promedioMin:'', notaMinimaParcial:'', requisitos:[]}
+  };
+}
+
 async function loadState(){
   try{
     const v = await persistencia.get('materias');
@@ -426,11 +479,29 @@ async function loadState(){
     const v = await persistencia.get('eventos');
     state.eventos = v ? JSON.parse(v) : [];
   }catch(e){ state.eventos = []; }
+
   let migrado = false;
   state.materias.forEach(m=>{
     if(!m.anio){ m.anio = new Date().getFullYear(); migrado = true; }
+    if(!m.temas){ m.temas = []; migrado = true; }
+    if(!m.regularidad){ m.regularidad = {asistenciaMin:'', promedioMin:'', requisitos:[]}; migrado = true; }
+    if(!m.promocion){ m.promocion = {asistenciaMin:'', promedioMin:'', notaMinimaParcial:'', requisitos:[]}; migrado = true; }
+    (m.notas||[]).forEach(n=>{
+      if(n.tipo === undefined){ n.tipo = ''; migrado = true; }
+      if(n.esRecuperatorio === undefined){ n.esRecuperatorio = false; migrado = true; }
+      if(n.recuperaDeId === undefined){ n.recuperaDeId = null; migrado = true; }
+    });
+    (m.materiales||[]).forEach(mat=>{
+      if(mat.temaId === undefined){ mat.temaId = ''; migrado = true; }
+    });
   });
-  if(migrado) await saveMaterias();
+  state.eventos.forEach(e=>{
+    if(e.tipoExamen === undefined){ e.tipoExamen = ''; migrado = true; }
+    if(e.temasIncluidos === undefined){ e.temasIncluidos = []; migrado = true; }
+    if(e.notaVinculadaId === undefined){ e.notaVinculadaId = null; migrado = true; }
+  });
+  if(migrado){ await saveMaterias(); await saveEventos(); }
+
   const anios = aniosDisponibles();
   anioSeleccionado = anios.length ? anios[0] : new Date().getFullYear();
   loaded = true;
@@ -444,8 +515,29 @@ async function saveEventos(){
 }
 
 // ---------- helpers ----------
+function notasEfectivas(materia){
+  // aplica los recuperatorios: si una nota es recuperatorio de otra y tiene valor cargado,
+  // ese valor reemplaza al de la nota original (misma ponderación que la original).
+  const overrides = {};
+  materia.notas.forEach(n=>{
+    if(n.esRecuperatorio && n.recuperaDeId && n.nota !== '' && n.nota !== null && !isNaN(parseFloat(n.nota))){
+      overrides[n.recuperaDeId] = parseFloat(n.nota);
+    }
+  });
+  const absorbidas = new Set(
+    materia.notas.filter(n => n.esRecuperatorio && n.recuperaDeId && overrides[n.recuperaDeId] !== undefined).map(n=>n.id)
+  );
+  const resultado = [];
+  materia.notas.forEach(n=>{
+    if(absorbidas.has(n.id)) return;
+    let valor = n.nota;
+    if(overrides[n.id] !== undefined) valor = overrides[n.id];
+    resultado.push({...n, nota: valor});
+  });
+  return resultado;
+}
 function promedioMateria(materia){
-  const notas = materia.notas.filter(n => n.nota !== '' && n.nota !== null && !isNaN(parseFloat(n.nota)));
+  const notas = notasEfectivas(materia).filter(n => n.nota !== '' && n.nota !== null && !isNaN(parseFloat(n.nota)));
   if(notas.length === 0) return null;
   let sumaPeso = 0, sumaPonderada = 0;
   notas.forEach(n=>{
@@ -454,6 +546,11 @@ function promedioMateria(materia){
     sumaPonderada += peso * parseFloat(n.nota);
   });
   return sumaPonderada / sumaPeso;
+}
+function notaMinimaEntreNotas(materia){
+  const notas = notasEfectivas(materia).filter(n => n.nota !== '' && n.nota !== null && !isNaN(parseFloat(n.nota)));
+  if(notas.length === 0) return null;
+  return Math.min(...notas.map(n=>parseFloat(n.nota)));
 }
 function promedioGeneral(lista){
   const proms = (lista || state.materias).map(promedioMateria).filter(p => p !== null);
@@ -489,6 +586,45 @@ function diasHasta(iso){
   return Math.round((d - hoy) / 86400000);
 }
 function materiaById(id){ return state.materias.find(m => m.id === id); }
+function temaById(m, temaId){ return (m.temas||[]).find(t=>t.id === temaId); }
+
+function estadoCondiciones(materia, grupo){
+  const cfg = materia[grupo];
+  const detalles = [];
+  let cumpleTotal = true;
+  const pctA = pctAsistencia(materia);
+  if(cfg.asistenciaMin !== '' && cfg.asistenciaMin !== null){
+    const min = parseFloat(cfg.asistenciaMin);
+    const ok = pctA !== null && pctA >= min;
+    detalles.push({label:`Asistencia (mínimo ${min}%)`, ok, valor: pctA===null?'sin registrar':fmtNum(pctA,0)+'%'});
+    if(!ok) cumpleTotal = false;
+  }
+  const prom = promedioMateria(materia);
+  if(cfg.promedioMin !== '' && cfg.promedioMin !== null){
+    const min = parseFloat(cfg.promedioMin);
+    const ok = prom !== null && prom >= min;
+    detalles.push({label:`Promedio (mínimo ${min})`, ok, valor: fmtNum(prom,2)});
+    if(!ok) cumpleTotal = false;
+  }
+  if(grupo === 'promocion' && cfg.notaMinimaParcial !== '' && cfg.notaMinimaParcial !== null){
+    const min = parseFloat(cfg.notaMinimaParcial);
+    const notaMin = notaMinimaEntreNotas(materia);
+    const ok = notaMin !== null && notaMin >= min;
+    detalles.push({label:`Ninguna nota menor a ${min}`, ok, valor: notaMin===null?'sin notas':fmtNum(notaMin,2)});
+    if(!ok) cumpleTotal = false;
+  }
+  (cfg.requisitos||[]).forEach(r=>{
+    detalles.push({label:r.texto, ok:r.cumplido, valor: r.cumplido ? 'Cumplido' : 'Pendiente'});
+    if(!r.cumplido) cumpleTotal = false;
+  });
+  return {cumpleTotal, detalles, sinCondiciones: detalles.length === 0};
+}
+
+function escapeHtml(s){
+  if(s === undefined || s === null) return '';
+  return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function escapeAttr(s){ return escapeHtml(s); }
 
 // ---------- render root ----------
 function setFechaHoy(){
@@ -556,7 +692,6 @@ function renderResumen(){
   const prom = promedioGeneral(materiasAnio);
   const promClass = prom === null ? '' : (prom >= 7 ? 'ok' : (prom >= 4 ? '' : 'alerta'));
   const enRiesgo = materiasAnio.filter(m => { const p = pctAsistencia(m); return p !== null && p < 75; });
-  const hoy = new Date(); hoy.setHours(0,0,0,0);
   const proximos = eventosAnio
     .filter(e => !e.hecho)
     .slice()
@@ -579,6 +714,7 @@ function renderResumen(){
   }else{
     html += `<div class="hero-countdown vacio"><div class="txt"><strong>No tenés nada pendiente en el calendario</strong><div>Cargá un parcial o una entrega en la pestaña Calendario.</div></div></div>`;
   }
+
   html += `<div class="stat-grid">
     <div class="stat-card ${promClass}">
       <div class="num">${fmtNum(prom,2)}</div>
@@ -615,6 +751,7 @@ function renderResumen(){
           <div style="font-size:12px;color:var(--ink-soft);">${m ? escapeHtml(m.nombre) : 'Sin materia'} · ${diasTxt}</div>
         </div>
         <span class="tag">${e.tipo}</span>
+        ${e.tipoExamen ? `<span class="tag outline">${e.tipoExamen}</span>` : ''}
       </div>`;
     });
     html += `</div>`;
@@ -669,19 +806,12 @@ function renderMaterias(){
 }
 
 function renderMateriaBody(m){
-  let rows = m.notas.map(n => `
-    <tr>
-      <td><input type="text" value="${escapeAttr(n.nombre)}" data-nota-field="nombre" data-materia="${m.id}" data-nota="${n.id}" placeholder="Ej: Parcial 1"></td>
-      <td style="width:90px;"><input type="number" step="0.01" min="0" max="10" value="${n.nota}" data-nota-field="nota" data-materia="${m.id}" data-nota="${n.id}" placeholder="0-10"></td>
-      <td style="width:80px;"><input type="number" step="1" min="0" value="${n.peso}" data-nota-field="peso" data-materia="${m.id}" data-nota="${n.id}" placeholder="peso"></td>
-      <td style="width:30px;"><button class="danger-link" data-del-nota="${n.id}" data-materia-nota="${m.id}">✕</button></td>
-    </tr>`).join('');
+  let notasHtml = m.notas.map(n => renderNotaCard(m, n)).join('');
+  const estadoReg = estadoCondiciones(m, 'regularidad');
+  const estadoProm = estadoCondiciones(m, 'promocion');
 
   return `<div class="materia-body">
-    <table class="notas-tbl">
-      <thead><tr><th>Evaluación</th><th>Nota</th><th>Peso</th><th></th></tr></thead>
-      <tbody>${rows || `<tr><td colspan="4" style="color:var(--ink-faint); font-style:italic;">Sin notas cargadas</td></tr>`}</tbody>
-    </table>
+    ${notasHtml || `<div class="empty-note">Sin notas cargadas todavía.</div>`}
     <button class="ghost" data-add-nota="${m.id}">+ Agregar nota</button>
     <span style="font-size:12px; color:var(--ink-soft); margin-left:10px;">El peso es opcional: si lo dejás vacío, todas las notas pesan igual.</span>
 
@@ -699,6 +829,104 @@ function renderMateriaBody(m){
         <div id="calcResultado-${m.id}" class="resultado">—</div>
       </div>
     </div>
+
+    <div class="temario-sec">
+      <div class="mini-title" style="font-size:14px;">Temario</div>
+      <div class="temas-list">
+        ${(m.temas.length ? m.temas.map(t=>`<span class="tema-chip">${escapeHtml(t.nombre)} <button data-del-tema="${t.id}" data-tema-materia="${m.id}" title="Eliminar tema">✕</button></span>`).join('') : '<span class="empty-note" style="padding:0;">Sin temas cargados</span>')}
+      </div>
+      <div class="row">
+        <input type="text" id="nuevoTema-${m.id}" placeholder="Ej: Unidad 3 - Recursividad" style="flex:1; min-width:180px;">
+        <button class="ghost" data-add-tema="${m.id}">+ Agregar tema</button>
+      </div>
+    </div>
+
+    <div class="cond-grid">
+      ${renderCondCard(m, 'regularidad', 'Regularidad', estadoReg)}
+      ${renderCondCard(m, 'promocion', 'Promoción', estadoProm)}
+    </div>
+  </div>`;
+}
+
+function renderNotaCard(m, n){
+  const otras = m.notas.filter(x=>x.id !== n.id);
+  const opcionesRecupera = otras.map(o=>`<option value="${o.id}" ${n.recuperaDeId===o.id?'selected':''}>${escapeHtml(o.nombre||'(sin nombre)')}</option>`).join('');
+  return `<div class="nota-card">
+    <div class="row">
+      <div class="field" style="flex:2; min-width:140px;">
+        <label>Evaluación</label>
+        <input type="text" value="${escapeAttr(n.nombre)}" data-nota-field="nombre" data-materia="${m.id}" data-nota="${n.id}" placeholder="Ej: Parcial 1">
+      </div>
+      <div class="field" style="width:120px;">
+        <label>Tipo</label>
+        <select data-nota-field="tipo" data-materia="${m.id}" data-nota="${n.id}">
+          <option value="" ${n.tipo===''?'selected':''}>—</option>
+          <option value="Teórico" ${n.tipo==='Teórico'?'selected':''}>Teórico</option>
+          <option value="Práctico" ${n.tipo==='Práctico'?'selected':''}>Práctico</option>
+        </select>
+      </div>
+      <div class="field" style="width:80px;">
+        <label>Nota</label>
+        <input type="number" step="0.01" min="0" max="10" value="${n.nota}" data-nota-field="nota" data-materia="${m.id}" data-nota="${n.id}" placeholder="0-10">
+      </div>
+      <div class="field" style="width:70px;">
+        <label>Peso</label>
+        <input type="number" step="1" min="0" value="${n.peso}" data-nota-field="peso" data-materia="${m.id}" data-nota="${n.id}" placeholder="peso">
+      </div>
+      <button class="danger-link" data-del-nota="${n.id}" data-materia-nota="${m.id}">eliminar</button>
+    </div>
+    <div class="recup-row">
+      <label class="recup-check">
+        <input type="checkbox" ${n.esRecuperatorio?'checked':''} data-nota-field="esRecuperatorio" data-materia="${m.id}" data-nota="${n.id}">
+        Es recuperatorio
+      </label>
+      ${n.esRecuperatorio ? `<div class="field" style="max-width:260px; margin-top:8px;">
+        <label>Recupera la nota de</label>
+        <select data-nota-field="recuperaDeId" data-materia="${m.id}" data-nota="${n.id}">
+          <option value="">Elegí cuál...</option>
+          ${opcionesRecupera}
+        </select>
+      </div>` : ''}
+    </div>
+  </div>`;
+}
+
+function renderCondCard(m, grupo, titulo, estado){
+  const cfg = m[grupo];
+  const reqs = (cfg.requisitos||[]).map(r=>`
+    <label class="req-item">
+      <input type="checkbox" ${r.cumplido?'checked':''} data-req-toggle="${r.id}" data-req-materia="${m.id}" data-req-grupo="${grupo}">
+      <span>${escapeHtml(r.texto)}</span>
+      <button class="danger-link" data-req-del="${r.id}" data-req-materia="${m.id}" data-req-grupo="${grupo}">✕</button>
+    </label>`).join('');
+
+  return `<div class="cond-card">
+    <div class="cond-title">${titulo}</div>
+    <div class="row">
+      <div class="field" style="width:120px;">
+        <label>Asistencia mínima %</label>
+        <input type="number" min="0" max="100" value="${cfg.asistenciaMin}" data-cond-field="asistenciaMin" data-cond-materia="${m.id}" data-cond-grupo="${grupo}">
+      </div>
+      <div class="field" style="width:110px;">
+        <label>Promedio mínimo</label>
+        <input type="number" step="0.1" min="0" max="10" value="${cfg.promedioMin}" data-cond-field="promedioMin" data-cond-materia="${m.id}" data-cond-grupo="${grupo}">
+      </div>
+      ${grupo === 'promocion' ? `<div class="field" style="width:130px;">
+        <label>Ninguna nota menor a</label>
+        <input type="number" step="0.1" min="0" max="10" value="${cfg.notaMinimaParcial}" data-cond-field="notaMinimaParcial" data-cond-materia="${m.id}" data-cond-grupo="${grupo}">
+      </div>` : ''}
+    </div>
+    <div class="requisitos-list">${reqs}</div>
+    <div class="row">
+      <input type="text" id="nuevoReq-${grupo}-${m.id}" placeholder="Otro requisito, ej: entregar todos los TPs" style="flex:1; min-width:160px;">
+      <button class="ghost" data-add-req="${m.id}" data-req-grupo="${grupo}">+</button>
+    </div>
+    <div class="veredicto ${estado.sinCondiciones ? '' : (estado.cumpleTotal ? 'ok' : 'malo')}">
+      ${estado.sinCondiciones ? 'Definí las condiciones para ver el resumen' : (estado.cumpleTotal ? '✓ Estás en condiciones' : '✕ Todavía no cumplís todo')}
+    </div>
+    ${estado.detalles.length ? `<div class="detalle-list">
+      ${estado.detalles.map(d=>`<div class="detalle-item ${d.ok?'ok':'malo'}">${d.ok?'✓':'✕'} ${escapeHtml(d.label)} — ${escapeHtml(d.valor)}</div>`).join('')}
+    </div>` : ''}
   </div>`;
 }
 
@@ -710,7 +938,7 @@ function calcularNotaFinal(m){
   const meta = parseFloat(metaEl.value);
   const pesoFinal = parseFloat(pesoEl.value) || 1;
   if(isNaN(meta)){ outEl.textContent = '—'; outEl.classList.remove('imposible'); return; }
-  const notas = m.notas.filter(n => n.nota !== '' && n.nota !== null && !isNaN(parseFloat(n.nota)));
+  const notas = notasEfectivas(m).filter(n => n.nota !== '' && n.nota !== null && !isNaN(parseFloat(n.nota)));
   let sumaPeso = 0, sumaPonderada = 0;
   notas.forEach(n=>{
     const peso = (n.peso === '' || n.peso === null || isNaN(parseFloat(n.peso)) || parseFloat(n.peso) <= 0) ? 1 : parseFloat(n.peso);
@@ -733,7 +961,7 @@ function calcularNotaFinal(m){
 // ---------- CALENDARIO ----------
 function renderCalendario(){
   let html = `<div class="top-actions">
-    <div class="mini-title" style="margin:0;">Parciales, finales y entregas</div>
+    <div class="mini-title" style="margin:0;">Parciales, entregas y recuperatorios</div>
     <button class="primary" id="btnNuevoEvento">+ Nuevo evento</button>
   </div>`;
   html += `<div id="formNuevoEventoWrap"></div>`;
@@ -758,17 +986,117 @@ function renderCalendario(){
 function renderEventoRow(e){
   const m = materiaById(e.materiaId);
   const dias = diasHasta(e.fecha);
+  let temasTxt = '';
+  if(e.temasIncluidos && e.temasIncluidos.length && m){
+    const nombres = e.temasIncluidos.map(ti=>{
+      const t = temaById(m, ti.temaId);
+      if(!t) return null;
+      return t.nombre + (ti.aclaracion ? ` (${ti.aclaracion})` : '');
+    }).filter(Boolean);
+    if(nombres.length) temasTxt = `<div class="temas-summary">Entra: ${escapeHtml(nombres.join(' · '))}</div>`;
+  }
   return `<div class="agenda-item">
     <input type="checkbox" ${e.hecho ? 'checked' : ''} data-toggle-evento="${e.id}">
     <div class="agenda-date ${!e.hecho && dias<=3 ? 'soon':''}">${fmtFechaCorta(e.fecha)}</div>
     <span class="colordot" style="background:${m?m.color:'#ccc'}"></span>
     <div style="flex:1;">
       <strong style="${e.hecho ? 'text-decoration:line-through; color:var(--ink-faint);':''}">${escapeHtml(e.titulo)}</strong>
-      <div style="font-size:12px;color:var(--ink-soft);">${m ? escapeHtml(m.nombre) : 'Sin materia'}</div>
+      <div style="font-size:12px;color:var(--ink-soft);">${m ? escapeHtml(m.nombre) : 'Sin materia'}${e.notaVinculadaId ? ' · cuenta para la nota' : ''}</div>
     </div>
     <span class="tag">${e.tipo}</span>
+    ${e.tipoExamen ? `<span class="tag outline">${e.tipoExamen}</span>` : ''}
     <button class="danger-link" data-del-evento="${e.id}">eliminar</button>
+    ${temasTxt}
   </div>`;
+}
+
+function renderEvExtras(materiaId, tipo){
+  const m = materiaById(materiaId);
+  const esExamen = TIPOS_EXAMEN.includes(tipo);
+  let html = '';
+  if(esExamen){
+    html += `<div class="row" style="margin-top:10px;">
+      <div class="field">
+        <label>Instancia</label>
+        <select id="evTipoExamen">
+          <option value="">—</option>
+          <option value="Teórico">Teórico</option>
+          <option value="Práctico">Práctico</option>
+          <option value="Teórico-Práctico">Teórico-Práctico</option>
+        </select>
+      </div>
+    </div>`;
+    if(m && m.temas.length > 0){
+      html += `<div class="temas-form-sec">
+        <label style="display:block; margin-bottom:6px;">¿Qué temas entran?</label>
+        ${m.temas.map(t=>`
+          <div class="tema-check-row">
+            <label><input type="checkbox" class="ev-tema-check" value="${t.id}"> ${escapeHtml(t.nombre)}</label>
+            <input type="text" class="ev-tema-aclaracion" data-tema="${t.id}" placeholder="Aclaración (ej: sólo hasta la mitad)">
+          </div>`).join('')}
+      </div>`;
+    }
+  }
+  html += `<div class="row" style="margin-top:10px; align-items:center;">
+    <label style="display:flex; align-items:center; gap:6px; font-weight:600; font-size:13px;">
+      <input type="checkbox" id="evCuentaNota" style="width:auto;"> Cuenta para la nota
+    </label>
+  </div>
+  <div id="evNotaExtras"></div>`;
+  return html;
+}
+function renderEvNotaExtras(materiaId, tipo){
+  const esRecuperatorio = tipo === 'Recuperatorio';
+  const m = materiaById(materiaId);
+  let html = `<div class="row" style="margin-top:8px;">
+    <div class="field" style="width:100px;"><label>Peso de la nota</label><input type="number" min="1" id="evNotaPeso" value="1"></div>`;
+  if(TIPOS_EXAMEN.includes(tipo)){
+    html += `<div class="field"><label>Tipo de nota</label>
+      <select id="evNotaTipo">
+        <option value="">—</option>
+        <option value="Teórico">Teórico</option>
+        <option value="Práctico">Práctico</option>
+      </select>
+    </div>`;
+  }
+  if(esRecuperatorio && m){
+    html += `<div class="field" style="min-width:180px;"><label>Recupera la nota de</label>
+      <select id="evRecuperaDeId">
+        <option value="">Elegí cuál...</option>
+        ${m.notas.map(n=>`<option value="${n.id}">${escapeHtml(n.nombre||'(sin nombre)')}</option>`).join('')}
+      </select>
+    </div>`;
+  }
+  html += `</div>`;
+  return html;
+}
+function formNuevoEvento(){
+  const opts = materiasDelAnio().map(m=>`<option value="${m.id}">${escapeHtml(m.nombre)}</option>`).join('');
+  return `<form class="inline-form" id="formNuevoEvento">
+    <div class="row">
+      <div class="field" style="flex:2; min-width:160px;">
+        <label>Título</label>
+        <input type="text" id="evTitulo" placeholder="Ej: Parcial de derivadas" required>
+      </div>
+      <div class="field">
+        <label>Materia</label>
+        <select id="evMateria">${opts || '<option value="">Sin materias cargadas</option>'}</select>
+      </div>
+      <div class="field">
+        <label>Tipo</label>
+        <select id="evTipo">${TIPOS_EVENTO.map(t=>`<option value="${t}">${t}</option>`).join('')}</select>
+      </div>
+      <div class="field">
+        <label>Fecha</label>
+        <input type="date" id="evFecha" required>
+      </div>
+    </div>
+    <div id="evExtras"></div>
+    <div class="row" style="margin-top:10px;">
+      <button type="submit" class="primary">Guardar</button>
+      <button type="button" class="ghost" id="cancelNuevoEvento">Cancelar</button>
+    </div>
+  </form>`;
 }
 
 // ---------- ASISTENCIA ----------
@@ -817,7 +1145,7 @@ function renderMateriales(){
 
   let items = [];
   materiasAnio.forEach(m=>{
-    (m.materiales||[]).forEach(mat=> items.push({...mat, materiaId:m.id, materiaNombre:m.nombre, materiaColor:m.color}));
+    (m.materiales||[]).forEach(mat=> items.push({...mat, materiaId:m.id, materiaNombre:m.nombre, materiaColor:m.color, materiaObj:m}));
   });
   if(filtroMaterial !== 'todas') items = items.filter(i=>i.materiaId === filtroMaterial);
 
@@ -825,11 +1153,12 @@ function renderMateriales(){
     html += `<div class="empty-note">No hay materiales cargados${filtroMaterial!=='todas' ? ' para esta materia' : ''} todavía.</div>`;
   }else{
     items.forEach(it=>{
+      const tema = it.temaId ? temaById(it.materiaObj, it.temaId) : null;
       html += `<div class="mat-item">
         <div>
           <span class="colordot" style="background:${it.materiaColor}"></span>
           <span class="titulo">${escapeHtml(it.titulo)}</span>
-          <div class="meta">${escapeHtml(it.materiaNombre)} · ${it.tipo}${it.notas ? ' · '+escapeHtml(it.notas) : ''}</div>
+          <div class="meta">${escapeHtml(it.materiaNombre)} · ${it.tipo}${tema ? ' · '+escapeHtml(tema.nombre) : ''}${it.notas ? ' · '+escapeHtml(it.notas) : ''}</div>
           ${it.url ? `<a href="${escapeAttr(it.url)}" target="_blank" rel="noopener">${escapeHtml(it.url)}</a>` : ''}
         </div>
         <button class="danger-link" data-del-material="${it.id}" data-material-materia="${it.materiaId}">eliminar</button>
@@ -838,6 +1167,7 @@ function renderMateriales(){
   }
   return html;
 }
+const TIPOS_MATERIAL = ['Apunte','Resumen','Video','Libro','Link','Otro'];
 
 // ---------- forms (inline) ----------
 function formNuevaMateria(){
@@ -860,33 +1190,27 @@ function formNuevaMateria(){
     </div>
   </form>`;
 }
-function formNuevoEvento(){
-  const opts = materiasDelAnio().map(m=>`<option value="${m.id}">${escapeHtml(m.nombre)}</option>`).join('');
-  return `<form class="inline-form" id="formNuevoEvento">
-    <div class="row">
-      <div class="field" style="flex:2; min-width:160px;">
-        <label>Título</label>
-        <input type="text" id="evTitulo" placeholder="Ej: Parcial de derivadas" required>
-      </div>
-      <div class="field">
-        <label>Materia</label>
-        <select id="evMateria">${opts || '<option value="">Sin materias cargadas</option>'}</select>
-      </div>
-      <div class="field">
-        <label>Tipo</label>
-        <select id="evTipo">${TIPOS_EVENTO.map(t=>`<option value="${t}">${t}</option>`).join('')}</select>
-      </div>
-      <div class="field">
-        <label>Fecha</label>
-        <input type="date" id="evFecha" required>
-      </div>
-      <button type="submit" class="primary">Guardar</button>
-      <button type="button" class="ghost" id="cancelNuevoEvento">Cancelar</button>
-    </div>
-  </form>`;
+function renderMtTemaField(materiaId){
+  const m = materiaById(materiaId);
+  const temas = m ? m.temas : [];
+  if(!temas.length){
+    return `<div class="field" style="min-width:160px;">
+      <label>Unidad / tema</label>
+      <select id="mtTema" disabled><option>Sin temas cargados en esta materia</option></select>
+    </div>`;
+  }
+  return `<div class="field" style="min-width:160px;">
+    <label>Unidad / tema (opcional)</label>
+    <select id="mtTema">
+      <option value="">Sin especificar</option>
+      ${temas.map(t=>`<option value="${t.id}">${escapeHtml(t.nombre)}</option>`).join('')}
+    </select>
+  </div>`;
 }
 function formNuevoMaterial(){
-  const opts = materiasDelAnio().map(m=>`<option value="${m.id}">${escapeHtml(m.nombre)}</option>`).join('');
+  const materias = materiasDelAnio();
+  const opts = materias.map(m=>`<option value="${m.id}">${escapeHtml(m.nombre)}</option>`).join('');
+  const primeraMateriaId = materias.length ? materias[0].id : '';
   return `<form class="inline-form" id="formNuevoMaterial">
     <div class="row">
       <div class="field">
@@ -901,6 +1225,7 @@ function formNuevoMaterial(){
         <label>Tipo</label>
         <select id="mtTipo">${TIPOS_MATERIAL.map(t=>`<option value="${t}">${t}</option>`).join('')}</select>
       </div>
+      <div id="mtTemaWrap">${renderMtTemaField(primeraMateriaId)}</div>
       <div class="field" style="flex:2; min-width:180px;">
         <label>Link (opcional)</label>
         <input type="url" id="mtUrl" placeholder="https://...">
@@ -939,16 +1264,7 @@ function attachHandlers(){
         ev.preventDefault();
         const nombre = document.getElementById('nmNombre').value.trim();
         if(!nombre) return;
-        state.materias.push({
-          id: uid(),
-          nombre,
-          cuatrimestre: document.getElementById('nmCuatri').value.trim(),
-          anio: anioSeleccionado,
-          color: selColor,
-          notas: [],
-          asistencia: {total:0, presentes:0},
-          materiales: []
-        });
+        state.materias.push(materiaVacia(nombre, document.getElementById('nmCuatri').value.trim(), anioSeleccionado, selColor));
         await saveMaterias();
         render();
       });
@@ -974,7 +1290,7 @@ function attachHandlers(){
   document.querySelectorAll('[data-add-nota]').forEach(el=>{
     el.addEventListener('click', async ()=>{
       const m = materiaById(el.dataset.addNota);
-      m.notas.push({id: uid(), nombre:'', nota:'', peso:''});
+      m.notas.push({id: uid(), nombre:'', nota:'', peso:'', tipo:'', esRecuperatorio:false, recuperaDeId:null});
       await saveMaterias();
       render();
     });
@@ -983,7 +1299,13 @@ function attachHandlers(){
     el.addEventListener('change', async ()=>{
       const m = materiaById(el.dataset.materia);
       const n = m.notas.find(x=>x.id === el.dataset.nota);
-      n[el.dataset.notaField] = el.value;
+      const field = el.dataset.notaField;
+      if(el.type === 'checkbox'){
+        n[field] = el.checked;
+        if(field === 'esRecuperatorio' && !el.checked) n.recuperaDeId = null;
+      }else{
+        n[field] = el.value;
+      }
       await saveMaterias();
       render();
     });
@@ -1006,11 +1328,94 @@ function attachHandlers(){
     }
   }
 
+  // TEMARIO
+  document.querySelectorAll('[data-add-tema]').forEach(el=>{
+    el.addEventListener('click', async ()=>{
+      const m = materiaById(el.dataset.addTema);
+      const input = document.getElementById('nuevoTema-'+m.id);
+      const nombre = input.value.trim();
+      if(!nombre) return;
+      m.temas.push({id: uid(), nombre});
+      await saveMaterias();
+      render();
+    });
+  });
+  document.querySelectorAll('[data-del-tema]').forEach(el=>{
+    el.addEventListener('click', async ()=>{
+      const m = materiaById(el.dataset.temaMateria);
+      const temaId = el.dataset.delTema;
+      m.temas = m.temas.filter(t=>t.id !== temaId);
+      state.eventos.forEach(e=>{
+        if(e.temasIncluidos) e.temasIncluidos = e.temasIncluidos.filter(ti=>ti.temaId !== temaId);
+      });
+      await saveMaterias(); await saveEventos();
+      render();
+    });
+  });
+
+  // REGULARIDAD / PROMOCIÓN
+  document.querySelectorAll('[data-cond-field]').forEach(el=>{
+    el.addEventListener('change', async ()=>{
+      const m = materiaById(el.dataset.condMateria);
+      m[el.dataset.condGrupo][el.dataset.condField] = el.value;
+      await saveMaterias();
+      render();
+    });
+  });
+  document.querySelectorAll('[data-add-req]').forEach(el=>{
+    el.addEventListener('click', async ()=>{
+      const m = materiaById(el.dataset.addReq);
+      const grupo = el.dataset.reqGrupo;
+      const input = document.getElementById(`nuevoReq-${grupo}-${m.id}`);
+      const texto = input.value.trim();
+      if(!texto) return;
+      m[grupo].requisitos.push({id: uid(), texto, cumplido:false});
+      await saveMaterias();
+      render();
+    });
+  });
+  document.querySelectorAll('[data-req-toggle]').forEach(el=>{
+    el.addEventListener('change', async ()=>{
+      const m = materiaById(el.dataset.reqMateria);
+      const grupo = el.dataset.reqGrupo;
+      const r = m[grupo].requisitos.find(x=>x.id === el.dataset.reqToggle);
+      r.cumplido = el.checked;
+      await saveMaterias();
+      render();
+    });
+  });
+  document.querySelectorAll('[data-req-del]').forEach(el=>{
+    el.addEventListener('click', async ()=>{
+      const m = materiaById(el.dataset.reqMateria);
+      const grupo = el.dataset.reqGrupo;
+      m[grupo].requisitos = m[grupo].requisitos.filter(x=>x.id !== el.dataset.reqDel);
+      await saveMaterias();
+      render();
+    });
+  });
+
   // CALENDARIO TAB
   const btnNE = document.getElementById('btnNuevoEvento');
   if(btnNE){
     btnNE.addEventListener('click', ()=>{
       document.getElementById('formNuevoEventoWrap').innerHTML = formNuevoEvento();
+      const evMateriaSel = document.getElementById('evMateria');
+      const evTipoSel = document.getElementById('evTipo');
+
+      function refreshNotaExtras(){
+        const chk = document.getElementById('evCuentaNota');
+        const wrap = document.getElementById('evNotaExtras');
+        wrap.innerHTML = chk.checked ? renderEvNotaExtras(evMateriaSel.value, evTipoSel.value) : '';
+      }
+      function refreshExtras(){
+        document.getElementById('evExtras').innerHTML = renderEvExtras(evMateriaSel.value, evTipoSel.value);
+        const chk = document.getElementById('evCuentaNota');
+        if(chk) chk.addEventListener('change', refreshNotaExtras);
+      }
+      evMateriaSel.addEventListener('change', refreshExtras);
+      evTipoSel.addEventListener('change', refreshExtras);
+      refreshExtras();
+
       document.getElementById('cancelNuevoEvento').addEventListener('click', ()=>{
         document.getElementById('formNuevoEventoWrap').innerHTML = '';
       });
@@ -1018,15 +1423,42 @@ function attachHandlers(){
         ev.preventDefault();
         const titulo = document.getElementById('evTitulo').value.trim();
         const fecha = document.getElementById('evFecha').value;
+        const materiaId = document.getElementById('evMateria').value || null;
+        const tipo = document.getElementById('evTipo').value;
         if(!titulo || !fecha) return;
-        state.eventos.push({
-          id: uid(),
-          titulo,
-          materiaId: document.getElementById('evMateria').value || null,
-          tipo: document.getElementById('evTipo').value,
-          fecha,
-          hecho: false
+
+        const tipoExamenEl = document.getElementById('evTipoExamen');
+        const tipoExamen = tipoExamenEl ? tipoExamenEl.value : '';
+
+        let temasIncluidos = [];
+        document.querySelectorAll('.ev-tema-check:checked').forEach(chk=>{
+          const aclEl = document.querySelector(`.ev-tema-aclaracion[data-tema="${chk.value}"]`);
+          temasIncluidos.push({temaId: chk.value, aclaracion: aclEl ? aclEl.value.trim() : ''});
         });
+
+        const nuevoEvento = {
+          id: uid(), titulo, materiaId, tipo, fecha, hecho: false,
+          tipoExamen, temasIncluidos, notaVinculadaId: null
+        };
+
+        const cuentaNota = document.getElementById('evCuentaNota');
+        if(cuentaNota && cuentaNota.checked && materiaId){
+          const m = materiaById(materiaId);
+          const pesoEl = document.getElementById('evNotaPeso');
+          const tipoNotaEl = document.getElementById('evNotaTipo');
+          const recuperaEl = document.getElementById('evRecuperaDeId');
+          const nuevaNota = {
+            id: uid(), nombre: titulo, nota: '', peso: pesoEl ? pesoEl.value : 1,
+            tipo: tipoNotaEl ? tipoNotaEl.value : '',
+            esRecuperatorio: tipo === 'Recuperatorio' && !!(recuperaEl && recuperaEl.value),
+            recuperaDeId: (recuperaEl && recuperaEl.value) ? recuperaEl.value : null
+          };
+          m.notas.push(nuevaNota);
+          nuevoEvento.notaVinculadaId = nuevaNota.id;
+          await saveMaterias();
+        }
+
+        state.eventos.push(nuevoEvento);
         await saveEventos();
         render();
       });
@@ -1065,6 +1497,10 @@ function attachHandlers(){
   if(btnNMat){
     btnNMat.addEventListener('click', ()=>{
       document.getElementById('formNuevoMaterialWrap').innerHTML = formNuevoMaterial();
+      const mtMateriaSel = document.getElementById('mtMateria');
+      mtMateriaSel.addEventListener('change', ()=>{
+        document.getElementById('mtTemaWrap').innerHTML = renderMtTemaField(mtMateriaSel.value);
+      });
       document.getElementById('cancelNuevoMaterial').addEventListener('click', ()=>{
         document.getElementById('formNuevoMaterialWrap').innerHTML = '';
       });
@@ -1075,10 +1511,12 @@ function attachHandlers(){
         if(!materiaId || !titulo) return;
         const m = materiaById(materiaId);
         if(!m.materiales) m.materiales = [];
+        const temaEl = document.getElementById('mtTema');
         m.materiales.push({
           id: uid(),
           titulo,
           tipo: document.getElementById('mtTipo').value,
+          temaId: (temaEl && !temaEl.disabled) ? temaEl.value : '',
           url: document.getElementById('mtUrl').value.trim(),
           notas: document.getElementById('mtNota').value.trim()
         });
@@ -1140,12 +1578,6 @@ function importBackup(file){
   };
   reader.readAsText(file);
 }
-
-function escapeHtml(s){
-  if(s === undefined || s === null) return '';
-  return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-}
-function escapeAttr(s){ return escapeHtml(s); }
 
 // ---------- init ----------
 (async function init(){
